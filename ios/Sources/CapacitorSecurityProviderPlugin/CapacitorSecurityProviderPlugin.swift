@@ -10,7 +10,7 @@ public class CapacitorSecurityProviderPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "CapacitorSecurityProviderPlugin"
     public let jsName = "CapacitorSecurityProvider"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "installIfNeeded", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "installIfNeeded", returnType: .promise)
     ]
     private let implementation = CapacitorSecurityProvider()
 

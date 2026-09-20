@@ -2,14 +2,16 @@ import XCTest
 @testable import CapacitorSecurityProviderPlugin
 
 class CapacitorSecurityProviderTests: XCTestCase {
-    func testEcho() {
-        // This is an example of a functional test case for a plugin.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testInstallIsNotImplementedOnIOS() {
+        XCTAssertEqual(CapacitorSecurityProvider().installIfNeeded(), "NotImplemented")
+    }
 
-        let implementation = CapacitorSecurityProvider()
-        let value = "Hello, World!"
-        let result = implementation.echo(value)
+    func testPluginRegistration() {
+        let plugin = CapacitorSecurityProviderPlugin()
 
-        XCTAssertEqual(value, result)
+        XCTAssertEqual(plugin.identifier, "CapacitorSecurityProviderPlugin")
+        XCTAssertEqual(plugin.jsName, "CapacitorSecurityProvider")
+        XCTAssertEqual(plugin.pluginMethods.map(\.name), ["installIfNeeded"])
+        XCTAssertTrue(plugin.pluginMethods.allSatisfy { $0.returnType == .promise })
     }
 }

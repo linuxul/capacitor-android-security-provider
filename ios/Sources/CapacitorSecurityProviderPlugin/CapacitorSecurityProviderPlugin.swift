@@ -10,11 +10,11 @@ public class CapacitorSecurityProviderPlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "CapacitorSecurityProviderPlugin"
     public let jsName = "CapacitorSecurityProvider"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "installIfNeeded", returnType: .promise)
+        .promise("installIfNeeded", CapacitorSecurityProviderPlugin.installIfNeeded)
     ]
     private let implementation = CapacitorSecurityProvider()
 
-    @objc func installIfNeeded(_ call: CAPPluginCall) {
+    func installIfNeeded(_ call: CAPPluginCall) {
         call.resolve([
             "status": "NotImplemented"
         ])
